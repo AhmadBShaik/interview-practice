@@ -54,3 +54,37 @@ const radiusArray = new RadiusArray(...radii)
 console.log(radiusArray.calculate(area))
 console.log(radiusArray.calculate(circumference))
 console.log(radiusArray.calculate(diameter))
+
+
+const user = [
+  { firstName: "Keanu", lastName: "Reeves", age: 52 },
+  { firstName: "Taylor", lastName: "Swift", age: 34 },
+  { firstName: "Lionel", lastName: "Messi", age: 36 },
+  { firstName: "Serena", lastName: "Williams", age: 34 },
+  { firstName: "Elon", lastName: "Musk", age: 52 },
+  { firstName: "Zendaya", lastName: "Coleman", age: 27 }
+];
+
+const result = user.reduce((acc, val) => {
+  return Object.keys(acc).includes(val.age.toString()) ?
+    { ...acc, [val.age]: [...acc[val.age], val] } :
+    { ...acc, [val.age]: [val] }
+}, {})
+
+console.log(result)
+
+const resultCount = user.reduce((acc, val) => {
+  return Object.keys(acc).includes(val.age.toString()) ?
+    { ...acc, [val.age]: acc[val.age] + 1 } :
+    { ...acc, [val.age]: 1 }
+}, {})
+
+console.log(resultCount)
+
+const resultCount2 = user.reduce((acc, val) => {
+  return acc[val.age] ?
+    acc[val.age] = acc[val.age] + 1 :
+    acc[val.age] = 1
+}, {})
+
+console.log(resultCount)
